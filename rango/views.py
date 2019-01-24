@@ -22,4 +22,4 @@ def index (request):
 def about (request):
 
     context_dict2 = {'boldmessage': "SCRAMBLED EGG"}
-    return HttpResponse(request, 'rango/about.html', context=context_dict2)
+    return render(request, 'rango/about.html', context=context_dict2)
