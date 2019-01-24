@@ -15,7 +15,22 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls import include ##this is linked with below 
+from rango import views
+from myapp import views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
+    
+    url(r'^$', views.index, name = 'index'),
+    url(r'^rango/', include('rango.urls')),
+    #url(r'^$', views.index, name='index'),
+    url(r'^myapp/', include('myapp.urls')), ## may delete this
+    #above maps any URLS starting
+    #with rango/ to be handled by
+    #the rango application
     url(r'^admin/', admin.site.urls),
-]
+    #static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
