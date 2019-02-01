@@ -11,8 +11,10 @@ class PageAdmin (admin.ModelAdmin):
     #fields = ['category', 'url']
     list_display = ('title', 'category', 'url')
 
-admin.site.register(Page, PageAdmin)
+    
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Page, PageAdmin)
+
 
 #class QuestionAdmin(admin.ModelAdmin):
 #    fieldsets = [

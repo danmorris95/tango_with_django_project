@@ -1,11 +1,12 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 
+
 class Category (models.Model):
     name = models.CharField(max_length=128, unique=True)
     views = models.IntegerField(default = 0)
     likes = models.IntegerField(default = 0) ## these two lines add likes and views to the category
-    slug = models.SlugField(unique = True)
+    slug = models.SlugField()#(unique = True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -30,4 +31,4 @@ class Page (models.Model):
         return self.title
     
     def __unicode__(self):
-        return self.name
+        return self.title#self.name
