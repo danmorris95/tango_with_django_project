@@ -45,19 +45,24 @@
 		</div>
 
 		<div>
+		
+			{% if user.is_authenticated %}
 
-			{% if category %}
+				{% if category %}
 
-				<a href="{% url 'add_page' category.slug %}">Add a Page</a><br />
+					<a href="{% url 'add_page' category.slug %}">Add a Page</a><br />
 
 			
 
 				
 
+				{% else %}
+
+					The specified category doen't exist!
+
+				{% endif %}
 			{% else %}
-
-				The specified category doen't exist!
-
+				<strong>In order to add a page you must log in!</strong>
 			{% endif %}
 
 	</div>
